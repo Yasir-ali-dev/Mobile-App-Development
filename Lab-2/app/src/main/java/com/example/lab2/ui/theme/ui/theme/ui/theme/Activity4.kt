@@ -34,6 +34,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -43,6 +45,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -69,6 +72,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -329,9 +333,45 @@ fun ScaffoldComponent(modifier: Modifier){
 }
 
 @Composable
-fun CardExample() {
-    Card() {
-        Text(text = "Hello, world!")
+fun CardExample(modifier: Modifier) {
+    Column(modifier=Modifier.fillMaxSize()) {
+        Row (
+            modifier
+                .fillMaxWidth()
+                .padding(top = 5.dp),
+            horizontalArrangement = Arrangement.SpaceAround
+        ){
+            OutlinedCard(
+                modifier= Modifier.size(170.dp,170.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                    contentColor = MaterialTheme.colorScheme.secondary
+                ),
+                elevation = CardDefaults.cardElevation(
+                    defaultElevation = 10.dp
+                )
+            ) {
+                Text(text = "Card 1", textAlign = TextAlign.Center,   modifier=Modifier.padding(10.dp))
+            }
+
+            Card(
+                modifier= Modifier.size(170.dp,170.dp),
+                elevation = CardDefaults.cardElevation(
+                    defaultElevation = 10.dp
+                ),
+                colors = CardDefaults.cardColors(
+                    contentColor = Color.White,
+                    containerColor = MaterialTheme.colorScheme.inverseSurface
+                )
+            ) {
+                Text(
+                    text = "Card 2",
+                    textAlign = TextAlign.Center,
+                    modifier=Modifier.padding(10.dp)
+                )
+            }
+
+        }
     }
 }
 
@@ -339,6 +379,6 @@ fun CardExample() {
 @Composable
 fun GreetingPreview4() {
     MyApplicationTheme {
-        ScaffoldComponent(modifier = Modifier)
+        CardExample(modifier = Modifier)
     }
 }
