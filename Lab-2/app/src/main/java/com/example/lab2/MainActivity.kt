@@ -85,6 +85,7 @@ fun TaskTwo(name: String, modifier: Modifier = Modifier) {
                 fontSize = 20.sp,
                 textAlign = TextAlign.Center
             )
+
         }
     }
 }
