@@ -2,6 +2,7 @@ package com.example.lab2.ui.theme.ui.theme.ui.theme
 
 import android.os.Bundle
 import android.view.RoundedCorner
+import android.widget.ScrollView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
@@ -22,19 +23,34 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.sharp.Menu
+import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ElevatedButton
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Alignment
@@ -44,6 +60,8 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
@@ -63,7 +81,6 @@ class Activity4 : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyApplicationTheme {
-
 
             }
         }
@@ -239,21 +256,89 @@ fun ModifierComponents(modifier : Modifier){
         )){
         Text(
             text = "Hello Modifier",
-            modifier.
-                paddingFromBaseline(top = 40.sp)
-                    .padding(horizontal = 20.dp)
-                    .offset(x=5.dp)
+            modifier
+                .paddingFromBaseline(top = 40.sp)
+                .padding(horizontal = 20.dp)
+                .offset(x = 5.dp)
         )
     }
 }
 
+@Composable
+fun SurfaceComponents (modifier: Modifier){
+    Surface (
+        modifier= Modifier
+            .fillMaxSize()
+            .padding(10.dp),
+        contentColor = Color.Magenta,
+        border = BorderStroke(2.dp, Color.Green),
+        shadowElevation = 18.dp,
+        color = Color.White,
+
+    ){
+        Text(text = "hi",modifier.padding(12.dp))
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ScaffoldComponent(modifier: Modifier){
+    Scaffold (
+
+        topBar = {
+            CenterAlignedTopAppBar(
+                title = {
+                    Text(text = "Top App Bar")
+                },
+                navigationIcon = {
+                    Icon(Icons.Sharp.Menu, contentDescription ="menu" )
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    titleContentColor =MaterialTheme.colorScheme.primary
+                ),
+                actions = {
+                    Icon(Icons.Filled.ArrowBack, contentDescription ="<-" )
+                    Icon(Icons.Filled.AccountCircle, contentDescription ="-" )
+                    Icon(Icons.Filled.ArrowForward, contentDescription ="->" )
+                },
 
 
+
+            )
+        },
+        bottomBar = {
+                    BottomAppBar (
+                        containerColor = Color.Magenta,
+                        contentColor = Color.Unspecified
+                    ){
+                        Text(text = "Bottom App Bar")
+                    }
+        },
+        floatingActionButton = {
+            FloatingActionButton(onClick = { /*TODO*/ }) {
+                Icon( Icons.Filled.Add, contentDescription = "")
+            }
+        }
+    ) {
+        innerPadding ->
+        Column(modifier=Modifier.padding(innerPadding)) {
+
+        }
+    }
+}
+
+@Composable
+fun CardExample() {
+    Card() {
+        Text(text = "Hello, world!")
+    }
+}
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview4() {
     MyApplicationTheme {
-        ModifierComponents(modifier = Modifier)
+        ScaffoldComponent(modifier = Modifier)
     }
 }
