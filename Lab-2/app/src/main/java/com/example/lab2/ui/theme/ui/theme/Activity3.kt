@@ -43,79 +43,14 @@ class Activity3 : ComponentActivity() {
     }
 }
 
-private val Context.dataStore by preferencesDataStore(name = "settings")
 
 
 
 
-//@Composable
-//fun Greeting(name: String, modifier: Modifier = Modifier,context: Context= LocalContext.current) {
-//
-//    Column(
-//        modifier = Modifier
-//            .fillMaxSize()
-//            .padding(16.dp),
-//        verticalArrangement = Arrangement.Center,
-//        horizontalAlignment = Alignment.CenterHorizontally
-//    ) {
-//
-//
-//
-////        TextField(value = text, onValueChange = { text = it }, label = { Text("Label") })
-//
-//        Button(
-//            onClick = {
-//                val intent =Intent(Intent.ACTION_VIEW, Uri.parse("http://www.mahar.com"))
-//                context.startActivity(intent)
-//            }
-//        ) {
-//            Text(text = "Go")
-//        }
-//
-//
-//    }
-//}
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview3() {
+    MyApplicationTheme {
 
-//@Composable
-//fun Login (modifier: Modifier){
-//    var username by remember {
-//        mutableStateOf("")
-//    }
-//    val context= LocalContext.current
-//    var pref:SharedPreferences =context.getSharedPreferences("myprefs",Context.MODE_PRIVATE)
-//    var usernamevalue =pref.edit().putString("username","guest")
-//    Column(modifier = Modifier.fillMaxSize()) {
-//        TextField(value = username, onValueChange = {username=it})
-//        Button(
-//            onClick = {
-//                val editor =pref.edit()
-//                editor.putString("username",username)
-//                editor .apply()
-//                editor.commit()
-//            }
-//        ) {
-//            Text(text = "Save")
-//        }
-//            Text(text = username)
-//
-//    }
-//}
-//
-//@SuppressLint("RememberReturnType")
-//@Composable
-//fun dataStoreFunction (){
-//    var context = LocalContext.current
-//
-//}
-//class DataStoreManager(private val context: Context){
-//
-//}
-
-//
-//@Preview(showBackground = true)
-//@Composable
-//fun GreetingPreview3() {
-//    MyApplicationTheme {
-//        Login(modifier = Modifier)
-//    }
-//}
+    }
+}

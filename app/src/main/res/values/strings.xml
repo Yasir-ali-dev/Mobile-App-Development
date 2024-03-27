@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Intents</string>
+    <string name="title_activity_">Activity</string>
+    <string name="title_activity_data_store">DataStore</string>
+</resources>
