@@ -5,4 +5,7 @@
     <string name="title_activity_4">Activity4</string>
     <string name="title_activity_detail">DetailActivity</string>
     <string name="title_activity_intent">IntentActivity</string>
+    <string name="title_activity_work_manager">WorkManagerActivity</string>
+    <string name="title_activity_my_worker">MyWorker</string>
+    <string name="title_activity_networking">Networking</string>
 </resources>
